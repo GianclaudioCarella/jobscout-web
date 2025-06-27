@@ -1,0 +1,6 @@
+@jobscout_web.Server_HostAddress = http://localhost:5152
+
+GET {{jobscout_web.Server_HostAddress}}/jobs/
+Accept: application/json
+
+###
