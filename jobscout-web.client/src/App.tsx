@@ -11,6 +11,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import { ScaleLoader } from "react-spinners";
 
 interface JobscoutResult {
@@ -71,31 +72,45 @@ function App() {
                 Welcome to Jobscout
             </h1>
             <p>Tool to help you to find your next job.</p>
-            <div className="input-group mb-3">
-                <Input
-                    type="text"
-                    placeholder="Title"
-                    value={jobTitle}
-                    onChange={e => setJobTitle(e.target.value)}
-                />
-                <Input
-                    type="text"
-                    placeholder="Location"
-                    value={location}
-                    onChange={e => setLocation(e.target.value)}
-                />
-                <Input  
-                    type="text"
-                    placeholder="Companies"
-                    value={companies}
-                    onChange={e => setCompanies(e.target.value)}
-                />
-                <Input  
-                    type="text"
-                    placeholder="Type of work (e.g. remote, hybrid, on-site)"
-                    value={workType}
-                    onChange={e => setWorkType(e.target.value)}
-                />
+            <div className="input-group mb-3 flex flex-col items-center gap-3">
+                <div className="grid w-full max-w-sm items-center gap-3">
+                    <Label htmlFor="email">Title</Label>
+                    <Input
+                        type="text"
+                        placeholder="Jobtitle (e.g. Software Engineer, Data Scientist...)"
+                        value={jobTitle}
+                        onChange={e => setJobTitle(e.target.value)}
+                    />
+                </div>
+                <div className="grid w-full max-w-sm items-center gap-3">
+                    <Label htmlFor="email">Location</Label>
+                    <Input
+                        type="text"
+                        placeholder="Location (e.g. New York, Brasilia...)"
+                        value={location}
+                        onChange={e => setLocation(e.target.value)}
+                    />
+                </div>
+
+                <div className="grid w-full max-w-sm items-center gap-3">
+                    <Label htmlFor="email">Companies</Label>
+                    <Input  
+                        type="text"
+                        placeholder="Companies (e.g. Google, Microsoft, Amazon...)"
+                        value={companies}
+                        onChange={e => setCompanies(e.target.value)}
+                    />
+                </div>
+
+                <div className="grid w-full max-w-sm items-center gap-3">
+                    <Label htmlFor="email">Type</Label>
+                    <Input  
+                        type="text"
+                        placeholder="Type of work (e.g. remote, hybrid, on-site)"
+                        value={workType}
+                        onChange={e => setWorkType(e.target.value)}
+                    />
+                </div>
             </div>
             <div>
                 <Button onClick={handleButtonClick}>Search</Button>
