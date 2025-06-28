@@ -19,9 +19,9 @@ namespace jobscout_web.Server.Controllers
         }
 
         [HttpGet(Name = "GetJobs")]
-        public IEnumerable<JobScoutResult> Get(string jobTitle, string location, string? companies)
+        public IEnumerable<JobScoutResult> Get(string jobTitle, string location, string? companies, string? workType)
         {
-            _logger.LogInformation("GetJobs called with jobTitle: {jobTitle}, location: {location}, companies: {companies}", jobTitle, location, companies);
+            _logger.LogInformation("GetJobs called with jobTitle: {jobTitle}, location: {location}, companies: {companies}, workType: {workType}", jobTitle, location, companies, workType);
 
             string? apiKey = Environment.GetEnvironmentVariable("SerpApiKey");
 
@@ -32,9 +32,14 @@ namespace jobscout_web.Server.Controllers
                 query = query + " for " + jobTitle;
             }
 
-            if (string.IsNullOrEmpty(jobTitle))
+            if (!string.IsNullOrEmpty(companies))
             {
-                query = query + " in these companies: " + companies;
+                query = query + " in " + companies;
+            }
+
+            if (!string.IsNullOrEmpty(workType))
+            {
+                query = query + " " + workType;
             }
 
             Hashtable ht = new Hashtable();

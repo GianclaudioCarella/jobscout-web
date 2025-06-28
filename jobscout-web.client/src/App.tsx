@@ -1,5 +1,17 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import { Button } from "@/components/ui/button"
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+import { Input } from "@/components/ui/input"
+import { ScaleLoader } from "react-spinners";
 
 interface JobscoutResult {
     title: string;
@@ -8,11 +20,11 @@ interface JobscoutResult {
 
 function App() {
     const [jobscoutResults, setJobscoutResults] = useState<JobscoutResult[]>();
-
     const [jobTitle, setJobTitle] = useState('');
     const [location, setLocation] = useState('');
     const [companies, setCompanies] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
+    const [workType, setWorkType] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         populateJobscoutData();
@@ -24,57 +36,71 @@ function App() {
     }
 
     const contents = 
-        isLoading
-        ? <p><em>Loading...</em></p>
+        isLoading 
+        ? <p className='loader'><ScaleLoader /></p>
         : jobscoutResults === undefined
             ? <p><em></em></p>
-            : <table className="table table-striped full-width-table" aria-labelledby="tableLabel">
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Url</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {jobscoutResults.map(result =>
-                        <tr key={result.title}>
-                            <td>{result.title}</td>
-                            <td>
-                                <a href={result.url} target="_blank" rel="noopener noreferrer">
-                                    {result.url}
-                                </a>
-                            </td>
-                        </tr>
-                    )}
-                </tbody>
-            </table>;
+            : <>
+            <Table className="table" aria-label="Recent Invoices">
+                <TableCaption>Jobscout 2025</TableCaption>
+                    <TableHeader>
+                        <TableRow>
+                        <TableHead className="w-[100px]">Title</TableHead>
+                        <TableHead>Link</TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {jobscoutResults.map(result => (
+                            <TableRow key={result.title}>
+                                <TableCell className="font-medium">{result.title}</TableCell>
+                                <TableCell>
+                                    <a href={result.url} target="_blank" rel="noopener noreferrer">
+                                        {result.url}
+                                    </a>
+                                </TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </>
+            ;
 
     return (
         <div>
-            <h1 id="tableLabel">Welcome to Jobscout</h1>
+            <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance">
+                Welcome to Jobscout
+            </h1>
             <p>Tool to help you to find your next job.</p>
             <div className="input-group mb-3">
-                <input
+                <Input
                     type="text"
-                    placeholder="Job Title"
+                    placeholder="Title"
                     value={jobTitle}
                     onChange={e => setJobTitle(e.target.value)}
                 />
-                <input
+                <Input
                     type="text"
                     placeholder="Location"
                     value={location}
                     onChange={e => setLocation(e.target.value)}
                 />
-                <input  
+                <Input  
                     type="text"
                     placeholder="Companies"
                     value={companies}
                     onChange={e => setCompanies(e.target.value)}
                 />
+                <Input  
+                    type="text"
+                    placeholder="Type of work (e.g. remote, hybrid, on-site)"
+                    value={workType}
+                    onChange={e => setWorkType(e.target.value)}
+                />
             </div>
-            <button onClick={handleButtonClick}>Search</button>
-            {contents}
+            <div>
+                <Button onClick={handleButtonClick}>Search</Button>
+                {contents}
+            </div>
         </div>
     );
 
@@ -82,7 +108,8 @@ function App() {
         const params = new URLSearchParams({
             jobTitle,
             location,
-            companies
+            companies,
+            workType
         });
 
         try {
