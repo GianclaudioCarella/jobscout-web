@@ -47,6 +47,7 @@ namespace jobscout_web.Server.Controllers
             ht.Add("location", location);
             ht.Add("hl", "en");
             ht.Add("gl", "us");
+            ht.Add("num", "50"); // Number of results to return
             //ht.Add("engine", "google_jobs ");
             ht.Add("google_domain", "google.com");
 
@@ -61,7 +62,12 @@ namespace jobscout_web.Server.Controllers
 
                 foreach (JObject result in results)
                 {
-                    JobScoutResult jobScoutResult = new JobScoutResult() { Title = result["title"].ToString(), Url = result["link"].ToString() };
+                    JobScoutResult jobScoutResult = new JobScoutResult()
+                    {
+                        Title = result["title"].ToString(),
+                        Url = result["link"].ToString(),
+                        Favico = result["favicon"].ToString()
+                    };
                     jobScoutResultsList.Add(jobScoutResult);
                 }
             }
@@ -81,5 +87,6 @@ namespace jobscout_web.Server.Controllers
     {
         public string? Title { get; set; }
         public string? Url { get; set; }
+        public string? Favico { get; set; } // Added to store the favicon URL
     }
 }

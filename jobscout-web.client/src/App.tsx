@@ -16,6 +16,7 @@ import { ScaleLoader } from "react-spinners";
 interface JobscoutResult {
     title: string;
     url: string;
+    favico: string;
 }
 
 function App() {
@@ -62,13 +63,13 @@ function App() {
             ;
 
     return (
-        <div className="">
+        <div className="text-center text-gray-900 dark:text-gray-100">
             <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance">
                 Welcome to Jobscout
             </h1>
-            <p>Tool to help you to find your next job.</p>
-            <div className="input-group mb-3 flex flex-col items-center gap-3">
-                <div className="grid w-full max-w-big items-center gap-3">
+            <div>Tool to help you to find your next job.</div>
+            <div className="text-center" >
+                <div className="m-4 grid gap-3 text-center">
                     <Label htmlFor="email">Title</Label>
                     <Input
                         type="text"
@@ -77,7 +78,7 @@ function App() {
                         onChange={e => setJobTitle(e.target.value)}
                     />
                 </div>
-                <div className="grid w-full max-w-big items-center gap-3">
+                <div className="m-4 grid gap-3 text-center">
                     <Label htmlFor="email">Location</Label>
                     <Input
                         type="text"
@@ -86,8 +87,7 @@ function App() {
                         onChange={e => setLocation(e.target.value)}
                     />
                 </div>
-
-                <div className="grid w-full max-w-big items-center gap-3">
+                <div className="m-4 grid gap-3 text-center">
                     <Label htmlFor="email">Companies</Label>
                     <Input  
                         type="text"
@@ -96,8 +96,7 @@ function App() {
                         onChange={e => setCompanies(e.target.value)}
                     />
                 </div>
-
-                <div className="grid w-full max-w-big items-center gap-3">
+                <div className="m-4 grid gap-3 text-center">
                     <Label htmlFor="email">Type</Label>
                     <Input  
                         type="text"
