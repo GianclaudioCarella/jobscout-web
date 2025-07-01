@@ -45,18 +45,14 @@ function App() {
             <Table className="table" aria-label="Recent Invoices">
                 <TableCaption>Jobscout 2025</TableCaption>
                     <TableHeader>
-                        <TableRow>
-                        <TableHead className="w-[100px]">Title</TableHead>
-                        <TableHead>Link</TableHead>
-                        </TableRow>
                     </TableHeader>
                     <TableBody>
                         {jobscoutResults.map(result => (
                             <TableRow key={result.title}>
-                                <TableCell className="font-medium">{result.title}</TableCell>
                                 <TableCell>
-                                    <a href={result.url} target="_blank" rel="noopener noreferrer">
-                                        {result.url}
+                                    <a className="text-base" href={result.url} target="_blank" rel="noopener noreferrer">
+                                        {result.title}
+                                        <div className="text-xs">{result.url}</div>
                                     </a>
                                 </TableCell>
                             </TableRow>
@@ -67,13 +63,13 @@ function App() {
             ;
 
     return (
-        <div>
+        <div className="">
             <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance">
                 Welcome to Jobscout
             </h1>
             <p>Tool to help you to find your next job.</p>
             <div className="input-group mb-3 flex flex-col items-center gap-3">
-                <div className="grid w-full max-w-sm items-center gap-3">
+                <div className="grid w-full max-w-big items-center gap-3">
                     <Label htmlFor="email">Title</Label>
                     <Input
                         type="text"
@@ -82,7 +78,7 @@ function App() {
                         onChange={e => setJobTitle(e.target.value)}
                     />
                 </div>
-                <div className="grid w-full max-w-sm items-center gap-3">
+                <div className="grid w-full max-w-big items-center gap-3">
                     <Label htmlFor="email">Location</Label>
                     <Input
                         type="text"
@@ -92,7 +88,7 @@ function App() {
                     />
                 </div>
 
-                <div className="grid w-full max-w-sm items-center gap-3">
+                <div className="grid w-full max-w-big items-center gap-3">
                     <Label htmlFor="email">Companies</Label>
                     <Input  
                         type="text"
@@ -102,7 +98,7 @@ function App() {
                     />
                 </div>
 
-                <div className="grid w-full max-w-sm items-center gap-3">
+                <div className="grid w-full max-w-big items-center gap-3">
                     <Label htmlFor="email">Type</Label>
                     <Input  
                         type="text"
@@ -112,9 +108,12 @@ function App() {
                     />
                 </div>
             </div>
-            <div>
+            <div className="">
                 <Button onClick={handleButtonClick}>Search</Button>
-                {contents}
+                <div className="text-center">
+                    {contents}
+                </div>
+                
             </div>
         </div>
     );
