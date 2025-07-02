@@ -1,3 +1,5 @@
+using jobscout_web.Server.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+// Add JobServices to the DI container
+builder.Services.AddScoped<ILogger<JobServices>, Logger<JobServices>>();
+builder.Services.AddScoped<IJobServices, JobServices>();
 
 var app = builder.Build();
 
