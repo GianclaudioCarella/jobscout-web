@@ -16,7 +16,6 @@ import { ScaleLoader } from "react-spinners";
 interface JobscoutResult {
     title: string;
     url: string;
-    favico: string;
 }
 
 function App() {

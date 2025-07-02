@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
@@ -8,6 +8,7 @@
     <SpaRoot>..\jobscout-web.client</SpaRoot>
     <SpaProxyLaunchCommand>npm run dev</SpaProxyLaunchCommand>
     <SpaProxyServerUrl>https://localhost:51035</SpaProxyServerUrl>
+    <UserSecretsId>ac6dab60-c262-4b04-9b82-bde462bba59a</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

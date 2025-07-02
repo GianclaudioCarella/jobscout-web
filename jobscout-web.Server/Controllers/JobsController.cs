@@ -65,8 +65,7 @@ namespace jobscout_web.Server.Controllers
                     JobScoutResult jobScoutResult = new JobScoutResult()
                     {
                         Title = result["title"].ToString(),
-                        Url = result["link"].ToString(),
-                        Favico = result["favicon"].ToString()
+                        Url = result["link"].ToString()
                     };
                     jobScoutResultsList.Add(jobScoutResult);
                 }
@@ -87,6 +86,5 @@ namespace jobscout_web.Server.Controllers
     {
         public string? Title { get; set; }
         public string? Url { get; set; }
-        public string? Favico { get; set; } // Added to store the favicon URL
     }
 }
