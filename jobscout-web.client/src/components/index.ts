@@ -10,7 +10,7 @@ export type { JobCardProps } from './JobCard';
 export type { SearchFormData } from './SearchForm';
 
 // Export all UI components with both named and default exports
-export { Button, buttonVariants, type ButtonProps, type ButtonVariants } from './button';
+export { Button, buttonVariants, type ButtonProps, type ButtonVariants } from './Button';
 export { Input, type InputProps } from './Input';
 export { Label, type LabelProps } from './Label';
 export { 
