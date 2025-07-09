@@ -1,6 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 #root {
-    max-width: 2048px;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
+    text-align: left;
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Fix button text visibility */
+button[data-slot="button"] {
+    color: white !important;
+}
+
+/* Specific fix for apply button */
+.apply-button {
+    color: white !important;
+    background-color: #2563eb !important;
+}
+
+.apply-button:hover {
+    background-color: #1d4ed8 !important;
+}
+
+/* Fix input text color and ensure visibility */
+input[type="text"], 
+input[type="email"], 
+input[type="password"], 
+textarea, 
+select {
+    color: #374151 !important;
+    background-color: #ffffff !important;
+}
+
+input::placeholder {
+    color: #9ca3af !important;
+}
+
+input:focus, 
+textarea:focus, 
+select:focus {
+    color: #111827 !important;
+    outline: 2px solid #2563eb !important;
+    outline-offset: 2px;
+}
+
+/* Add utility classes for line clamping */
+.line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+/* Improve shadow utilities */
+.shadow-card {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+}
+
+.shadow-soft {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
 }
